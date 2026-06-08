@@ -53,3 +53,18 @@ history = model.fit(
     validation_split=0.1,    # keeps 10% of training data to check progress
     verbose=1                # shows progress bar
 )
+
+# 8. Evaluate on test set
+test_loss, test_accuracy = model.evaluate(X_test, y_test, verbose=0)
+print(f"\nNeural Network Accuracy: {test_accuracy * 100:.2f}%")
+print(f"Random Forest Accuracy:  96.00%")
+print(f"Winner: {'Neural Network' if test_accuracy > 0.96 else 'Random Forest'}")
+
+# 9. Save the model as .h5 file (your Week 4-5 deliverable)
+model.save("gesture_model.h5")
+print("\nModel saved as gesture_model.h5 ✅")
+
+# 10. Save the encoder too (needed later to convert numbers back to gesture names)
+with open("label_encoder.pkl", "wb") as f:
+    pickle.dump(encoder, f)
+print("Label encoder saved ✅")
