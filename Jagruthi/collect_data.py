@@ -19,6 +19,8 @@ hands = mp_hands.Hands()
 # Drawing utility
 mp_draw = mp.solutions.drawing_utils
 
+sample_count = 0
+
 while True:
 
     success, frame = cap.read()
@@ -54,14 +56,22 @@ while True:
                 row.append(landmark.y)
                 row.append(landmark.z)
 
-            # Add label
             row.append(gesture_name)
 
-            # Save row to CSV
             writer.writerow(row)
+
+            sample_count += 1
+
+        print(f"Samples: {sample_count}", end="\r")
+
+        
 
     # Show webcam
     cv2.imshow("Collect Data", frame)
+    
+    if sample_count >= 150:
+        print("150 samples collected")
+        break
 
     # Exit on ESC or q
     key = cv2.waitKey(1)
