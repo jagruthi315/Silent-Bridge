@@ -23,5 +23,3 @@ Python · OpenCV · MediaPipe · TensorFlow · Whisper · Flask · Scikit-learn
 ## 📅 Timeline
 8 Week Project — Currently in progress
 
-## 📌 Status
-🟡 Week 1 — In Progress
